@@ -1,0 +1,20 @@
+{
+  "_help": "README.md, section Configuration, explains every setting. The bot token goes to its own file: run the bridge with --set-token.",
+  "telegram": {
+    "chat_id": "",
+    "thread_id": null,
+    "proxy": ""
+  },
+  "notify_content": "full",
+  "message_prefix": "📧 ",
+  "calendar_prefix": "📅 ",
+  "defocus_outlook": {
+    "enabled": true,
+    "idle_seconds": 180,
+    "activate": "Finder"
+  },
+  "jira": {
+    "base_url": "",
+    "subject_prefix": "[JIRA]"
+  }
+}

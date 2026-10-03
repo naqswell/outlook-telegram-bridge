@@ -1,0 +1,27 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Tests on the system Python, the one the bridge runs on
+        run: /usr/bin/python3 -m unittest discover -s tests -v
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Tests on Python 3.13
+        run: python -W error::ResourceWarning -m unittest discover -s tests -v
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: shellcheck
+        run: shellcheck install.sh uninstall.sh
+      - name: Tests that do not need macOS
+        run: python3 -m unittest discover -s tests -v
